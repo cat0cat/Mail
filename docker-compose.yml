@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  app:
+    build: ./
+    ports:
+      - "7019:7019"
+      - "5023:5023"
+    depends_on:
+      - database
+
+  database:
+    image: postgres
+    container_name: 'YOApi-db'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: YOMail
+    ports:
+      - "5433:5432"
